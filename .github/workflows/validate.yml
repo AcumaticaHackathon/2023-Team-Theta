@@ -58,10 +58,6 @@ jobs:
         name: hackathon.acumatica.theta
         path: deploy
 
-    - name: File prints
-      run: |
-        du -al .
-        du -al /home/runner/work/acumatica-hackathon-2023/
     - name: chmod Script
       run: chmod +x ./.github/scripts/validate.sh
     - name: login
