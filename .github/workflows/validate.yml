@@ -37,7 +37,7 @@ jobs:
            DestinationPath = "hackathon.acumatica.theta.zip"
           }
           Compress-Archive @compress
-          
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
@@ -58,12 +58,14 @@ jobs:
         name: hackathon.acumatica.theta
         path: deploy
 
-    - name: Login
+    - name: File prints
       run: |
         du -al .
         du -al /home/runner/work/acumatica-hackathon-2023/
-        chmod +x ./.github/scripts/validate.sh
-        ls | echo
+    - name: chmod Script
+      run: chmod +x ./.github/scripts/validate.sh
+    - name: login
+      run: |
         loginJson='{"name":"githubaction","password":"Theta","company":"Company","branch":""}'
         curl -X POST https://hackathon.acumatica.com/Theta/entity/auth/login -H "Content-Type: application/JSON" -d $loginJson -i --cookie-jar ./cookies.txt
     - name: Zips an Uploads
